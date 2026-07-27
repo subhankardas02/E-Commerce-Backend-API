@@ -22,7 +22,6 @@ public class CartService {
     private CartItemRepository cartItemRepository;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
 
     public boolean addToCart(String userId, CartItemRequest request) {
         Optional<Product> productOpt= productRepository.findById(request.getProductId());
