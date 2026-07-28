@@ -2,11 +2,14 @@ package com.project.controller;
 
 
 import com.project.dto.CartItemRequest;
+import com.project.model.CartItem;
 import com.project.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
@@ -24,6 +27,11 @@ public class CartController {
     public ResponseEntity<Void> removeFromCart(@RequestHeader("X-User-ID") String userId, @PathVariable Long productId){
         boolean deleted=cartService.deleteItemFromCart(userId, productId);
         return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
+    @GetMapping
+    public ResponseEntity<List<CartItem>> getCart(@RequestHeader("X-User-ID") String userId){
+        return ResponseEntity.ok(cartService.getCart(userId));
+
     }
 
 
