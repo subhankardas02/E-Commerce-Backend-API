@@ -6,12 +6,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/orders")
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/orders")
 @RequiredArgsConstructor
 public class OrderController {
 
@@ -20,10 +23,11 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<OrderResponse> createOrder(@RequestHeader("X-User-ID") String userId){
-        OrderResponse order=orderService.createOrder(userId);
-        return new ResponseEntity<>(order, HttpStatus.CREATED);
+        Optional<OrderResponse> order = orderService.createOrder(userId);
 
+        // Use the existing 'order' variable here instead of calling the service again
+        return order
+                .map(orderResponse -> new ResponseEntity<>(orderResponse, HttpStatus.CREATED))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
-
-
 }
