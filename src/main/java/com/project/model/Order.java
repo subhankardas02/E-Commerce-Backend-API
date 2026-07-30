@@ -23,7 +23,7 @@ public class Order {
     private User user;
     private BigDecimal totalAmount;
     @Enumerated(EnumType.STRING)
-    private OederStatus status=OederStatus.PENDING;
+    private OrderStatus status=OrderStatus.PENDING;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> item=new ArrayList<>();

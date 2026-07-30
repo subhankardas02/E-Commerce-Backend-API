@@ -1,5 +1,5 @@
 package com.project.model;
 
-public enum OederStatus {
+public enum OrderStatus {
     PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
 }
