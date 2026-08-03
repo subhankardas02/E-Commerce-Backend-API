@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce | Access Grid</title>
+    <!-- Assuming your existing CSS is in style.css -->
+    <link rel="stylesheet" href="css/login_style.css">
+</head>
+<body>
+
+<!-- Ambient Background Glows -->
+<div class="bg-shape shape-1"></div>
+<div class="bg-shape shape-2"></div>
+
+<!-- Dynamic Toast Notification Container -->
+<div id="toast" class="toast hidden"></div>
+
+<div class="card fade-in" style="max-width: 450px;"> <!-- Slightly narrower for login -->
+    <div class="card-header">
+        <h2>Access Grid</h2>
+        <p class="subtitle">Enter your credentials to authenticate.</p>
+    </div>
+
+    <form id="loginForm">
+        <div class="form-section">
+            <div class="field full-width">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="field full-width">
+                <label for="password">Security Key (Password)</label>
+                <input type="password" id="password" placeholder="••••••••••••" required>
+            </div>
+        </div>
+
+        <!-- Login Specific Options -->
+        <div class="auth-options">
+            <label class="remember-me">
+                <input type="checkbox" id="remember">
+                <span>Remember Identity</span>
+            </label>
+            <a href="#" class="auth-link">Lost Key?</a>
+        </div>
+
+        <button type="submit" id="submitBtn">
+            <span class="btn-text">Authenticate</span>
+            <!-- SVG Loading Spinner -->
+            <svg class="spinner hidden" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+            </svg>
+        </button>
+
+        <div class="auth-footer">
+            Not in the grid yet? <a href="register.html">Initialize Account</a>
+        </div>
+    </form>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

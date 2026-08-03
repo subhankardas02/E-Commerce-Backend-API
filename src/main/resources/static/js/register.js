@@ -35,16 +35,28 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const responseData = await response.text();
 
         if (response.ok) {
-            showToast(responseData || 'Identity registered successfully!', 'success');
+            // Show success message
+            showToast('Identity registered successfully! Rerouting to login...', 'success');
             document.getElementById('registerForm').reset();
+
+            // Redirect to login page after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
+
         } else {
             showToast(responseData || 'Failed to register identity.', 'error');
+
+            // Reset UI State on error (we don't reset on success because page will redirect)
+            submitBtn.disabled = false;
+            btnText.textContent = 'Register Identity';
+            spinner.classList.add('hidden');
         }
     } catch (err) {
         console.error('Registration Error:', err);
         showToast('Server connection failed. Is Spring Boot running?', 'error');
-    } finally {
-        // Reset UI State
+
+        // Reset UI State on error
         submitBtn.disabled = false;
         btnText.textContent = 'Register Identity';
         spinner.classList.add('hidden');
