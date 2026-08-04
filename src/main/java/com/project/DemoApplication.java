@@ -10,4 +10,3 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 }
-// E-com backend almost ready
