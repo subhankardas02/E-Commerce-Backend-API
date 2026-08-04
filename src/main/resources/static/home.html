@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce | The Grid</title>
+    <!-- High-tech font for the cyberpunk aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<!-- Ambient Background Glows -->
+<div class="bg-shape shape-1"></div>
+<div class="bg-shape shape-2"></div>
+
+<!-- Dynamic Toast Notification Container -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Navigation Bar -->
+<nav class="navbar fade-in">
+    <div class="nav-brand">NEON<span>MART</span></div>
+    <form id="searchForm" class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search the grid...">
+        <button type="submit">Search</button>
+    </form>
+    <div class="nav-links">
+        <a href="#" class="nav-btn">Profile</a>
+        <a href="login.html" class="nav-btn outline">Logout</a>
+    </div>
+</nav>
+
+<!-- Main Content Container -->
+<main class="container fade-in">
+    <div class="page-header">
+        <h2>Available Inventory</h2>
+        <p class="subtitle">Browse the latest hardware and resources.</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-container">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+        <p>Accessing mainframe...</p>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productGrid" class="product-grid hidden">
+        <!-- Products will be injected here dynamically via JS -->
+    </div>
+
+    <!-- Empty State (No Products Found) -->
+    <div id="emptyState" class="empty-state hidden">
+        <h3>No records found</h3>
+        <p>Try adjusting your search parameters.</p>
+        <button id="clearSearchBtn" class="nav-btn">Clear Search</button>
+    </div>
+</main>
+
+<script src="js/home.js"></script>
+</body>
+</html>

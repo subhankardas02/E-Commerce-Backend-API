@@ -35,19 +35,19 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const responseData = await response.text();
 
         if (response.ok) {
-            // Show success message
-            showToast('Identity registered successfully! Rerouting to login...', 'success');
+            // UPDATED: Changed message to reflect going to the home page
+            showToast('Identity registered successfully! Entering the grid...', 'success');
             document.getElementById('registerForm').reset();
 
-            // Redirect to login page after 1.5 seconds
+            // UPDATED: Redirect to home page instead of login page
             setTimeout(() => {
-                window.location.href = 'login.html';
+                window.location.href = 'home.html';
             }, 1500);
 
         } else {
             showToast(responseData || 'Failed to register identity.', 'error');
 
-            // Reset UI State on error (we don't reset on success because page will redirect)
+            // Reset UI State on error
             submitBtn.disabled = false;
             btnText.textContent = 'Register Identity';
             spinner.classList.add('hidden');
